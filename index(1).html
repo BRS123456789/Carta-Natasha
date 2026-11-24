@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Natasha ♡</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Dancing+Script:wght@400;500;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0c0b10;color:#e9e0e5;font-family:'Cormorant Garamond',serif;min-height:100vh}
+#entrada{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;justify-content:center;align-items:center;background:radial-gradient(circle,#28202a,#0c0b10 70%);transition:opacity 1.2s ease,visibility 1.2s}
+#entrada.oculta{opacity:0;visibility:hidden;pointer-events:none}
+#entrada p{color:#c7adb8;letter-spacing:5px;font-size:14px;margin-bottom:35px;text-align:center}
+.corazon{border:none;background:none;color:#a83e59;font-size:105px;cursor:pointer;filter:drop-shadow(0 0 10px #a83e5960);animation:latido 1.8s infinite;transition:transform .7s,filter .7s}
+.corazon:hover{filter:drop-shadow(0 0 30px #ff557e);transform:scale(1.15)}
+.corazon.abierto{animation:abrir .9s forwards}
+@keyframes latido{0%,100%{transform:scale(1)}50%{transform:scale(1.12)}}
+@keyframes abrir{0%{transform:scale(1);opacity:1}40%{transform:scale(1.8);opacity:1;filter:drop-shadow(0 0 60px #ff557e)}100%{transform:scale(4);opacity:0}}
+#entrada .instruccion{margin-top:30px;font-family:'Dancing Script',cursive;letter-spacing:1px;font-size:24px;color:#d8bdc8}
+#contenido{opacity:0;visibility:hidden;transition:opacity 1.5s ease}
+#contenido.visible{opacity:1;visibility:visible}
+header{text-align:center;padding:85px 20px 55px}
+header h1{font-family:'Dancing Script',cursive;font-size:clamp(55px,10vw,90px);font-weight:400;color:#e6cbd4}
+header p{margin-top:15px;color:#a99aa5;font-size:19px;letter-spacing:2px}
+.menu{display:flex;justify-content:center;flex-wrap:wrap;gap:30px;padding:30px 20px 90px}
+.opcion{width:min(300px,85vw);min-height:230px;padding:35px 20px;border:1px solid #51404e;border-radius:5px;background:linear-gradient(145deg,#241d27,#15131a);color:#e9d8dd;cursor:pointer;transition:.4s;text-align:center;font-family:inherit}
+.opcion:hover{transform:translateY(-8px);border-color:#bb788e;box-shadow:0 0 35px #a34c6530}
+.opcion .simbolo{display:block;font-size:45px;margin-bottom:20px;color:#c18a9b}
+.opcion h2{font-family:'Dancing Script',cursive;font-size:38px;font-weight:400;margin-bottom:12px}
+.opcion p{font-size:17px;color:#aa9da6}
+.pagina{display:none;padding:50px 20px 100px;animation:aparecer 1s ease}
+.pagina.activa{display:block}
+@keyframes aparecer{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.volver{display:block;margin:0 auto 55px;background:none;border:1px solid #756071;padding:10px 25px;color:#d9c5d0;cursor:pointer;font-family:inherit;font-size:18px;transition:.3s}
+.volver:hover{background:#493445}
+.titulo{text-align:center;font-family:'Dancing Script',cursive;font-weight:400;font-size:clamp(45px,8vw,70px);margin-bottom:55px;color:#d9b9c7}
+.carta{background:#e9dfcc;color:#493b32}
+.papel{max-width:750px;margin:auto;padding:60px clamp(25px,8vw,85px);background:#f1e8d8;border:1px solid #d3c3aa;box-shadow:0 15px 60px #0005}
+.papel h2{font-family:'Dancing Script',cursive;font-size:50px;text-align:center;font-weight:400;color:#74554c;margin-bottom:45px}
+.papel p{font-size:21px;line-height:1.85;margin-bottom:25px;text-align:justify}
+.firma{font-family:'Dancing Script',cursive;font-size:34px!important;text-align:right!important;margin-top:45px;color:#795b51}
+.poemario{text-align:center;background:radial-gradient(ellipse at top,#29232d,#101014 70%)}
+.poemario .subtitulo{text-align:center;color:#958a91;letter-spacing:4px;margin-top:-35px;margin-bottom:80px}
+.estrofa{max-width:750px;margin:0 auto 85px;padding:0 10px}
+.estrofa p{font-size:clamp(19px,3vw,25px);line-height:1.9;font-style:italic;color:#ded5d7}
+.estrofa:last-child{margin-bottom:0}
+.final{text-align:center;padding:80px 20px;background:#0b0b0f}
+.final h2{font-family:'Dancing Script',cursive;font-size:55px;color:#d7b8c0;font-weight:400}
+.final p{margin-top:15px;font-size:21px;color:#b7a9ae}
+footer{text-align:center;padding:25px;color:#625b64;background:#09090c}
+@media(max-width:600px){.papel{padding:35px 23px}.papel p{font-size:19px}.menu{gap:20px}}
+</style>
+</head>
+<body>
+<div id="entrada">
+  <p>HAY ALGO QUE QUIERO ENSEÑARTE</p>
+  <button class="corazon" id="corazon" aria-label="Abrir regalo" onclick="abrirRegalo()">♥</button>
+  <div class="instruccion">Toca el corazón...</div>
+</div>
+
+<div id="contenido">
+<header>
+  <h1>Para Natasha</h1>
+  <p>Un pequeño regalo de Ray ♡</p>
+</header>
+
+<div id="menu" class="menu">
+  <button class="opcion" onclick="mostrar('carta')">
+    <span class="simbolo">✉</span><h2>La carta</h2>
+    <p>Algo que las palabras no saben explicar.</p>
+  </button>
+  <button class="opcion" onclick="mostrar('poema')">
+    <span class="simbolo">☾</span><h2>El poemario</h2>
+    <p>Ojalá ser un pájaro.</p>
+  </button>
+</div>
+
+<section id="carta" class="pagina carta">
+  <button class="volver" onclick="volverMenu()">← Volver</button>
+  <div class="papel">
+    <h2>Para Natasha</h2>
+    <p>No sé si es tu intensidad o cómo hablas, o más bien escribes, tus dos agujeros negros que tienes en la parte superior de la cabeza o qué es, pero me encantas.</p>
+    <p>No puedo escribir lo que siento y, de hecho, a veces empiezo a escribir, pero me parece que te amo más que eso y deshecho lo que voy escribiendo.</p>
+    <p>No sé si es tu mezcla entre explosividad y belleza, si es tu pelo negro como la obsidiana o tal vez tu rostro, al ver tus dientes como si fueran perlas entre corales de un rosa hermoso.</p>
+    <p>No sé si es tu cintura perfecta que quiero tocar mientras te beso o tu nombre, que es tan exótico como lindo.</p>
+    <p>No sé qué de todo es, si es una cosa o son varias, si es lo que me encanta. No sé si te amo más a ti o a mí mismo, probablemente lo primero. Por ello, cuando a veces eres seca o me respondes con términos simples, me enojo como un niño pequeño, porque siento y recuerdo lo sublime que eres y yo soy simplemente una persona más.</p>
+    <p>Ni idea tengo de cuándo te voy a pedir salir conmigo, pero tengo claro que dentro de poco lo voy a hacer, porque tus ojos, tus pestañas y tu personalidad no olvido, y si no es a ti, mi chiquilla hermosa, no sé a quién querer.</p>
+    <p class="firma">Te quiero, Natasha.<br>Con cariño, Ray</p>
+  </div>
+</section>
+
+<section id="poema" class="pagina poemario">
+  <button class="volver" onclick="volverMenu()">← Volver</button>
+  <h2 class="titulo">Ojalá ser un pájaro</h2>
+  <p class="subtitulo">UN PEQUEÑO POEMARIO</p>
+  <div class="estrofa"><p>Ojalá ser un pájaro de un color negro u oscuro,<br>ojalá una urraca que emprende su migración,<br>que llega a Costa Rica pasando cualquier muro,<br>que llega al oeste llevando pesadamente su corazón.</p></div>
+  <div class="estrofa"><p>Ojalá un cuervo con plumaje oscuro,<br>un pico y ojos negros como los de la persona que quiero.<br>Si ser un pájaro tuviese que ser, lo asumo,<br>siempre y cuando pueda esperar para verte de nuevo.</p></div>
+  <div class="estrofa"><p>Porque me da igual ser un animal,<br>un ave simple cual pato o majestuoso como una oca,<br>porque, aun siendo el más básico organismo,<br>recordaré que mi único fin es besar esa boca.</p></div>
+  <div class="estrofa"><p>Que me quiten la libertad si es necesario,<br>que conmigo hagan un esclavo<br>y del poeta que soy hagan un prisionero.<br>Porque, aun en la cárcel,<br>no podrán borrar lo imaginario,<br>lo que más quiero, mi mundo entero.</p></div>
+  <div class="estrofa"><p>Porque yo de ti ya soy sin quererlo esclavo,<br>y aun así no me quiero ir y me siento feliz,<br>porque es que tu persona en mi corazón es como un clavo,<br>un amor perfecto que quiero sin ningún matiz.</p></div>
+</section>
+
+<div class="final"><h2>Te quiero, Natasha</h2><p>Con cariño, Ray ♡</p></div>
+<footer>Hecho con cariño · Para Natasha</footer>
+</div>
+
+<script>
+function abrirRegalo(){
+  const corazon=document.getElementById('corazon');
+  const entrada=document.getElementById('entrada');
+  const contenido=document.getElementById('contenido');
+  corazon.classList.add('abierto');
+  setTimeout(()=>{
+    entrada.classList.add('oculta');
+    contenido.classList.add('visible');
+  },750);
+}
+function mostrar(id){
+  document.getElementById('menu').style.display='none';
+  document.querySelectorAll('.pagina').forEach(p=>p.classList.remove('activa'));
+  document.getElementById(id).classList.add('activa');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function volverMenu(){
+  document.querySelectorAll('.pagina').forEach(p=>p.classList.remove('activa'));
+  document.getElementById('menu').style.display='flex';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
